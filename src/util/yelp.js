@@ -24,9 +24,12 @@ const Yelp = {
                         category: business.categories[0].title,
                         rating:business.rating,
                         reviewCount: business.review_count,
+                        url: business.url
                     
                     }
                 })
+            }else{
+                return
             }
         })
     }

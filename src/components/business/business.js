@@ -2,11 +2,20 @@ import React from "react";
 import './business.css';
 
 class Business extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(){
+    window.open(this.props.business.url, '_blank')
+  }
+
   render() {
     return (
       <div className="Business">
         <div className="Business image-container">
-          <img src={this.props.business.imageSrc} alt=''/>
+          <img onClick={this.handleClick} src={this.props.business.imageSrc} alt=''/>
         </div>
         <h2>{this.props.business.name}</h2>
         <div className="Business-information">
