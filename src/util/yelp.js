@@ -3,14 +3,11 @@ import {apiKey} from './access.js';
 const Yelp = {
 
     search(term, location, sortBy){
-        
 
-        return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
-            headers: {
-                Authorization: `Bearer ${apiKey}`, 
-                'X-Requested-With': 'origin,x-requested-with'
-              } 
-        }).then(res => res.json())
+        return fetch(`https://yelp-server.herokuapp.com/search?term=${term}&location=${location}&sort_by=${sortBy}&key=${apiKey}`, {
+            method: 'GET',    
+        })
+        .then(res => res.json())
         .then(jsonRes => {
             if(jsonRes.businesses){
                 return jsonRes.businesses.map( business => {
